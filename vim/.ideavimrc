@@ -1,0 +1,83 @@
+" --------------- Includes --------------- {{{
+
+source ~/.vimrc
+
+"  }}}
+
+let mapleader=","
+
+" --------------- Idea VIM --------------- {{{
+
+" --------- NORMAL MODE MAPPINGS --------- {{{
+
+" Quickly edit vimrc
+nnoremap <leader>ev :vsplit ~/.vimrc<cr>
+nnoremap <leader>sv :w<cr>:source $MYVIMRC<cr>
+
+" Move line down
+noremap - ddp
+" Move line up
+noremap _ ddkkp
+
+" Fast up / right / left / down
+noremap <c-j> 5j
+noremap <c-k> 5k
+noremap <c-h> ^
+noremap <c-l> g_
+
+" Autoformat
+noremap fd :Autoformat<CR>
+
+" Switch fold
+" nnoremap <space> za
+" make space more useful
+nnoremap <silent> <space> @=(foldlevel('.')?'zo':'zc')<cr>
+
+" New Empty Vertical Split
+nnoremap <leader>vs :vnew<cr>
+
+" --------- INSERT MODE MAPPINGS ---------- {{{
+
+" Exit Insert Mode
+inoremap jk <esc>
+
+" }}}
+
+" --------- VISUAL MODE MAPPINGS ---------- {{{
+vnoremap y "*y
+
+" Make header out of selection
+vnoremap <leader>h !/Users/jaklimoff/bin/commands/header<CR>
+
+" [C]onvert [S]nake to [C]amel
+vnoremap <leader>csc !/Users/jaklimoff/bin/convertvar -sc<CR>
+
+" [C]onvert [C]amel to [S]nake
+vnoremap <leader>ccs !/Users/jaklimoff/bin/convertvar -cs<CR>
+
+" }}}
+
+
+set ideajoin                                        " to enable join via the IDE.
+set ideastatusicon=gray                             " color of the vim icon in status bar
+
+set easymotion                                      " enable plugin https://github.com/AlexPl292/IdeaVim-EasyMotion
+set surround                                        " enable plugin https://github.com/tpope/vim-surround
+set multiple-cursors                                " enable plugin https://github.com/terryma/vim-multiple-cursors
+
+" Autoformat command
+map fd :action ReformatCode<CR>
+" Select word and find next occurance
+map <C-p> <Plug>NextWholeOccurrence
+map <leader>r <Action>(RenameElement)
+map <leader>z <Action>(ToggleDistractionFreeMode)
+
+map <leader><leader>s <Plug>(easymotion-s)
+map <leader><leader>f <Plug>(easymotion-f)
+map <leader><leader>F <Plug>(easymotion-F)
+map <leader><leader>t <Plug>(easymotion-t)
+map <leader><leader>T <Plug>(easymotion-T)
+map <leader><leader>k <Plug>(easymotion-k)
+map <leader><leader>j <Plug>(easymotion-j)
+"  }}}
+

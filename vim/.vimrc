@@ -1,4 +1,14 @@
-" ------------ Main Settings ------------- {{{
+"
+"                       __   _(_)_ __ ___  _ __ ___
+"                       \ \ / / | '_ ` _ \| '__/ __|
+"                        \ V /| | | | | | | | | (__
+"                         )_/ |_|_| |_| |_|_|  \___|
+"
+" Author: Jack Klimov
+" Source: https://github.com/jaklimoff/dotfiles
+
+
+" ------------ General Settings ------------- {{{
 
 let mapleader=","
 
@@ -18,171 +28,164 @@ set wildignore+=*/node_modules/*        " ctrlp - ignore node modules
 
 "  }}}
 
-" --------------- Idea VIM --------------- {{{
-
-if has('nvim')
-
-else
-
-set ideajoin
-set ideastatusicon=gray
-
-set easymotion
-set surround
-set multiple-cursors
-
-map fd :action ReformatCode<CR>
-map <C-p> <Plug>NextWholeOccurrence
-map <leader>r <Action>(RenameElement)
-map <leader>z <Action>(ToggleDistractionFreeMode)
-
-endif
-
-"  }}}
-
 " 🛠  Plugins Installed ---- {{{
 " A minimalist Vim plugin manager.
 " https://github.com/junegunn/vim-plug
 
 call plug#begin()
-    " Lean & mean status/tabline for vim that's light as air
-    " https://github.com/vim-airline/vim-airline
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    " Use release branch (Recommend)
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Lean & mean status/tabline for vim that's light as air
+" https://github.com/vim-airline/vim-airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-    " Comment staff out
-    " https://github.com/tpope/vim-commentary
-    Plug 'tpope/vim-commentary'
+" Use release branch (Recommend)
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-    " Quoting/parenthesizing made simple
-    " https://github.com/tpope/vim-surround
-    Plug 'tpope/vim-surround'
+" For the project view
+" https://github.com/preservim/nerdtree
+Plug 'preservim/nerdtree'
 
-    " Multiple cursors
-    " https://github.com/mg979/vim-visual-multi
-    Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+" Rust plugin 
+" https://github.com/rust-lang/rust.vim
+Plug 'rust-lang/rust.vim'
 
-    " Insert or delete brackets, parens, quotes in pair.
-    " https://github.com/jiangmiao/auto-pairs
-    Plug 'jiangmiao/auto-pairs'
+" https://github.com/tpope/vim-dadbod
+" Plug 'tpope/vim-dadbod'
 
-    " Material color scheme for Vim based on w0ng/vim-hybrid color scheme
-    " https://github.com/kristijanhusak/vim-hybrid-material
-"   Plug 'kristijanhusak/vim-hybrid-material'
-    
-    " A dark colorscheme for space-vim
-    " https://github.com/liuchengxu/space-vim-dark/
-"   Plug 'liuchengxu/space-vim-dark'
+" Solidity
+" https://github.com/tomlion/vim-solidity
+Plug 'tomlion/vim-solidity'
 
-    " Adds file type icons to Vim plugins such as: NERDTree, 
-    " vim-airline, CtrlP, unite, Denite, lightline, vim-startify and many more
-    " https://github.com/ryanoasis/vim-devicons
-    Plug 'ryanoasis/vim-devicons'
+" To beautify vim
+" https://github.com/Chiel92/vim-autoformat
+Plug 'Chiel92/vim-autoformat'
 
-    " Fzf is a general-purpose command-line fuzzy finder
-    " https://github.com/junegunn/fzf
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Comment staff out
+" https://github.com/tpope/vim-commentary
+Plug 'tpope/vim-commentary'
 
-    " Things you can do with fzf and Vim.
-    " https://github.com/junegunn/fzf.vim
-    Plug 'junegunn/fzf.vim'
+" Quoting/parenthesizing made simple
+" https://github.com/tpope/vim-surround
+Plug 'tpope/vim-surround'
 
-    " Provides support for expanding abbreviations similar to emmet
-    " https://github.com/mattn/emmet-vim
-    Plug 'mattn/emmet-vim'
+" Multiple cursors
+" https://github.com/mg979/vim-visual-multi
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
-    " A Vim wrapper for running tests on different granularities.
-    "   https://github.com/vim-test/vim-test
-    Plug 'vim-test/vim-test'
+" Insert or delete brackets, parens, quotes in pair.
+" https://github.com/jiangmiao/auto-pairs
+Plug 'jiangmiao/auto-pairs'
 
-    " Black is the uncompromising Python code formatter.
-    " https://github.com/psf/black
-    Plug 'psf/black', { 'tag': '*' }
-
-    " Vim syntax for TOML.
-    " https://github.com/cespare/vim-toml
-    Plug 'cespare/vim-toml'
-
-    " A vim plugin wrapper for prettier, pre-configured with custom default prettier settings.
-    " https://github.com/prettier/vim-prettier
-    Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-
-    " Class/module browser
-    Plug 'majutsushi/tagbar'
-
-  "Vim syntax for helm templates (yaml + gotmpl + sprig + custom)
-  " https://github.com/towolf/vim-helm
-    Plug 'towolf/vim-helm'
-
-  "  " Insert or delete brackets, parens, quotes in pair.
-    " https://github.com/jiangmiao/auto-pairs
-    Plug 'jiangmiao/auto-pairs'
-
-    " Material color scheme for Vim based on w0ng/vim-hybrid color scheme
-    " https://github.com/kristijanhusak/vim-hybrid-material
+" Material color scheme for Vim based on w0ng/vim-hybrid color scheme
+" https://github.com/kristijanhusak/vim-hybrid-material
 "   Plug 'kristijanhusak/vim-hybrid-material'
 
-    " A dark colorscheme for space-vim
-    " https://github.com/liuchengxu/space-vim-dark/
+" A dark colorscheme for space-vim
+" https://github.com/liuchengxu/space-vim-dark/
 "   Plug 'liuchengxu/space-vim-dark'
 
-    " Adds file type icons to Vim plugins such as: NERDTree, 
-    " vim-airline, CtrlP, unite, Denite, lightline, vim-startify and many more
-    " https://github.com/ryanoasis/vim-devicons
-    Plug 'ryanoasis/vim-devicons'
+" Make your Vim/Neovim as smart as VSCode.
+" https://github.com/neoclide/coc.nvim
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-    " Fzf is a general-purpose command-line fuzzy finder
-    " https://github.com/junegunn/fzf
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Adds file type icons to Vim plugins such as: NERDTree,
+" vim-airline, CtrlP, unite, Denite, lightline, vim-startify and many more
+" https://github.com/ryanoasis/vim-devicons
+Plug 'ryanoasis/vim-devicons'
 
-    " Things you can do with fzf and Vim.
-    " https://github.com/junegunn/fzf.vim
-    Plug 'junegunn/fzf.vim'
+" Fzf is a general-purpose command-line fuzzy finder
+" https://github.com/junegunn/fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
-    " Provides support for expanding abbreviations similar to emmet
-    " https://github.com/mattn/emmet-vim
-    Plug 'mattn/emmet-vim'
+" Things you can do with fzf and Vim.
+" https://github.com/junegunn/fzf.vim
+Plug 'junegunn/fzf.vim'
 
-    " A Vim wrapper for running tests on different granularities.
-    "   https://github.com/vim-test/vim-test
-    Plug 'vim-test/vim-test'
+" A Vim wrapper for running tests on different granularities.
+"   https://github.com/vim-test/vim-test
+Plug 'vim-test/vim-test'
 
-    " Black is the uncompromising Python code formatter.
-    " https://github.com/psf/black
-    Plug 'psf/black', { 'tag': '*' }
+" Black is the uncompromising Python code formatter.
+" https://github.com/psf/black
+Plug 'psf/black', { 'tag': '*' }
 
-    " Vim syntax for TOML.
-    " https://github.com/cespare/vim-toml
-    Plug 'cespare/vim-toml'
+" Vim syntax for TOML.
+" https://github.com/cespare/vim-toml
+Plug 'cespare/vim-toml'
 
-    " A vim plugin wrapper for prettier, pre-configured with custom default prettier settings.
-    " https://github.com/prettier/vim-prettier
-    Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" A vim plugin wrapper for prettier, pre-configured with custom default prettier settings.
+" https://github.com/prettier/vim-prettier
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
-    " Class/module browser
-    Plug 'majutsushi/tagbar'
+" Vim syntax highlight and indent definition for coconut.
+" https://github.com/manicmaniac/coconut.vim
+Plug 'manicmaniac/coconut.vim'
 
-    " Vim motions on speed! 
-    " https://github.com/easymotion/vim-easymotion
-    Plug 'easymotion/vim-easymotion'
+" Class/module browser
+Plug 'majutsushi/tagbar'
 
-    " Automatic table creator & formatter allowing 
-    " one to create neat tables as you type
-    " https://github.com/dhruvasagar/vim-table-mode
-    Plug 'dhruvasagar/vim-table-mode'
+"Vim syntax for helm templates (yaml + gotmpl + sprig + custom)
+" https://github.com/towolf/vim-helm
+Plug 'towolf/vim-helm'
 
-    "Multi-syntax context-sensitive color name highlighter
-    "https://vimawesome.com/plugin/vim-css-color-the-story-of-us
-    Plug 'ap/vim-css-color'
+"  " Insert or delete brackets, parens, quotes in pair.
+" https://github.com/jiangmiao/auto-pairs
+Plug 'jiangmiao/auto-pairs'
 
-    " Fugitive is the premier Vim plugin for Git. 
-    " Or maybe it's the premier Git plugin for Vim? Either way, 
-    " it's 'so awesome, it should be illegal'. That's why it's 
-    " called Fugitive.
-    " https://github.com/tpope/vim-fugitive
-    Plug 'tpope/vim-fugitive'
+" Material color scheme for Vim based on w0ng/vim-hybrid color scheme
+" https://github.com/kristijanhusak/vim-hybrid-material
+"   Plug 'kristijanhusak/vim-hybrid-material'
+
+" A dark colorscheme for space-vim
+" https://github.com/liuchengxu/space-vim-dark/
+"   Plug 'liuchengxu/space-vim-dark'
+
+" Adds file type icons to Vim plugins such as: NERDTree,
+" vim-airline, CtrlP, unite, Denite, lightline, vim-startify and many more
+" https://github.com/ryanoasis/vim-devicons
+Plug 'ryanoasis/vim-devicons'
+
+" Provides support for expanding abbreviations similar to emmet
+" https://github.com/mattn/emmet-vim
+Plug 'mattn/emmet-vim'
+
+" Black is the uncompromising Python code formatter.
+" https://github.com/psf/black
+Plug 'psf/black', { 'tag': '*' }
+
+" Vim motions on speed!
+" https://github.com/easymotion/vim-easymotion
+Plug 'easymotion/vim-easymotion'
+
+" Automatic table creator & formatter allowing
+" one to create neat tables as you type
+" https://github.com/dhruvasagar/vim-table-mode
+Plug 'dhruvasagar/vim-table-mode'
+
+"Multi-syntax context-sensitive color name highlighter
+"https://vimawesome.com/plugin/vim-css-color-the-story-of-us
+Plug 'ap/vim-css-color'
+
+" In order to work with React
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
+" In order to work with Rust
+" https://github.com/rust-lang/rust.vim
+Plug 'rust-lang/rust.vim'
+
+" Fugitive is the premier Vim plugin for Git.
+" Or maybe it's the premier Git plugin for Vim? Either way,
+" it's 'so awesome, it should be illegal'. That's why it's
+" called Fugitive.
+" https://github.com/tpope/vim-fugitive
+Plug 'tpope/vim-fugitive'
+
+" Nord vim theme
+" https://github.com/arcticicestudio/nord-vim
+Plug 'arcticicestudio/nord-vim'
+
 call plug#end()
 
 
@@ -191,47 +194,41 @@ call plug#end()
 " ---------- Secondary Settings ---------- {{{
 
 " Dark
-set background=dark
+"set background=dark
 set encoding=UTF-8
-" colorscheme hybrid_material
-let g:space_vim_dark_background = 234
 
-" colorscheme space-vim-dark
-hi PMenu                 ctermfg=189    ctermbg=234
-hi Comment               ctermfg=59    cterm=italic
-hi Normal ctermbg=none
-hi NonText ctermbg=none ctermfg=none
+colorscheme nord
 
+"hi PMenu                 ctermfg=189    ctermbg=234
+"hi Comment               ctermfg=59    cterm=italic
+"hi Normal ctermbg=none
+"hi NonText ctermbg=none ctermfg=none
+
+hi Folded                ctermbg=8                    ctermfg=4
 hi LineNr                ctermfg=94                   cterm=none
-hi VertSplit             ctermfg=236   ctermbg=none   cterm=none
-hi pythonClass           ctermfg=214                  cterm=none
-hi ColorColumn           ctermfg=240   ctermbg=236    cterm=none
-
-hi Folded                ctermbg=233   ctermfg=100
-
-hi String                ctermfg=71                   cterm=none
-hi Statement             ctermfg=108                   cterm=none
-hi semshiLocal           ctermfg=209
-hi semshiGlobal          ctermfg=214
-hi semshiImported        ctermfg=229
-hi semshiParameter       ctermfg=75
-hi semshiParameterUnused ctermfg=117
-hi semshiFree            ctermfg=218
-hi semshiBuiltin         ctermfg=207
-hi semshiAttribute       ctermfg=49
-hi semshiSelf            ctermfg=206                  cterm=none
-hi semshiUnresolved      ctermfg=226
-hi semshiSelected        ctermfg=201   ctermfg=none   cterm=underline
-
-hi semshiErrorSign       ctermfg=231
-hi semshiErrorChar       ctermfg=231
-sign define semshiError text=E> texthl=semshiErrorSign
-
-
-" Pymode settings
-let g:pymode = 1
-" Turn on the rope script
-let g:pymode_rope = 1
+"hi VertSplit             ctermfg=236   ctermbg=none   cterm=none
+"hi pythonClass           ctermfg=214                  cterm=none
+"hi ColorColumn           ctermfg=240   ctermbg=236    cterm=none
+"
+"hi Folded                ctermbg=233   ctermfg=100
+"
+"hi String                ctermfg=71                   cterm=none
+"hi Statement             ctermfg=108                   cterm=none
+"hi semshiLocal           ctermfg=209
+"hi semshiGlobal          ctermfg=214
+"hi semshiImported        ctermfg=229
+"hi semshiParameter       ctermfg=75
+"hi semshiParameterUnused ctermfg=117
+"hi semshiFree            ctermfg=218
+"hi semshiBuiltin         ctermfg=207
+"hi semshiAttribute       ctermfg=49
+"hi semshiSelf            ctermfg=206                  cterm=none
+"hi semshiUnresolved      ctermfg=226
+"hi semshiSelected        ctermfg=201   ctermfg=none   cterm=underline
+"
+"hi semshiErrorSign       ctermfg=231
+"hi semshiErrorChar       ctermfg=231
+"sign define semshiError text=E> texthl=semshiErrorSign
 
 " Table Mode
 let g:table_mode_corner='|'
@@ -270,9 +267,9 @@ autocmd BufWinEnter * silent! :%foldopen!
 " Including .jinja fileds
 augroup html_files
   au!
-    au filetype html,xhtml,xml,css setlocal expandtab shiftwidth=2 tabstop=2
-    au bufread,bufnewfile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
-    au bufnewfile,bufread *.mako,*.mak,*.jinja2 setlocal ft=html
+  au filetype html,xhtml,xml,css setlocal expandtab shiftwidth=2 tabstop=2
+  au bufread,bufnewfile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
+  au bufnewfile,bufread *.mako,*.mak,*.jinja2 setlocal ft=html
 augroup end
 " }}}
 
@@ -286,16 +283,27 @@ augroup zshrc_files
 augroup end
 " }}}
 
+" json file settings ---------------------- {{{
+augroup json_files
+  au!
+  au filetype json setlocal foldmethod=syntax shiftwidth=2
+augroup end
+" }}}
+
+" js file settings ---------------------- {{{
 augroup javascript_files
   au!
   au filetype javascript,javascript.jsx setlocal foldmethod=syntax shiftwidth=2
 augroup end
+" }}}
 
+" md file settings ---------------------- {{{
 augroup md_files
   au!
   au filetype markdown setlocal foldmethod=syntax shiftwidth=2 spell spelllang=en_us,ru_ru
   au filetype markdown setlocal wrap linebreak textwidth=0 wrapmargin=0
 augroup end
+" }}}
 
 " yaml file settings ---------------------- {{{
 augroup filetype_yaml
@@ -314,7 +322,6 @@ augroup filetype_vim
   au filetype vim set sw=2 ts=2
 augroup end
 " }}}
-
 
 " python file settings ---------------------- {{{
 augroup filetype_python
@@ -345,6 +352,9 @@ augroup end
 nnoremap <leader>ev :vsplit ~/.vimrc<cr>
 nnoremap <leader>sv :w<cr>:source $MYVIMRC<cr>
 
+" ctrl + left-click shortcut to go to the definition for a symbol
+nnoremap <C-LeftMouse> :ALEGoToDefinition<CR>
+
 " Move line down
 noremap - ddp
 " Move line up
@@ -363,6 +373,9 @@ nmap <silent> t<C-s> :TestSuite<CR>
 nmap <silent> t<C-l> :TestLast<CR>
 nmap <silent> t<C-g> :TestVisit<CR>
 
+" Autoformat
+noremap fd :Autoformat<CR>
+
 " Switch fold
 " nnoremap <space> za
 " make space more useful
@@ -371,32 +384,37 @@ nnoremap <silent> <space> @=(foldlevel('.')?'zo':'zc')<cr>
 " New Empty Vertical Split
 nnoremap <leader>vs :vnew<cr>
 
-" execute file being edited 
+" execute file being edited
 nnoremap <leader>ee :w !zsh<cr>
+nnoremap <leader>ep :w !python<cr>
 
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 let g:coc_config_home = expand('<sfile>:h')
 let g:coc_explorer_global_presets = {
-\   '.vim': {
-\      'root-uri': '~/.vim',
-\   },
-\   'floating': {
-\      'position': 'floating',
-\   },
-\   'floatingLeftside': {
-\      'position': 'floating',
-\      'floating-position': 'left-center',
-\      'floating-width': 50,
-\   },
-\   'floatingRightside': {
-\      'position': 'floating',
-\      'floating-position': 'right-center',
-\      'floating-width': 50,
-\   },
-\   'simplify': {
-\     'file.child.template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-\   }
-\ }
+      \   '.vim': {
+      \      'root-uri': '~/.vim',
+      \   },
+      \   'floating': {
+      \      'position': 'floating',
+      \   },
+      \   'floatingLeftside': {
+      \      'position': 'floating',
+      \      'floating-position': 'left-center',
+      \      'floating-width': 50,
+      \   },
+      \   'floatingRightside': {
+      \      'position': 'floating',
+      \      'floating-position': 'right-center',
+      \      'floating-width': 50,
+      \   },
+      \   'simplify': {
+      \     'file.child.template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
+      \   }
+      \ }
 nnoremap <leader>ce :CocCommand explorer --preset floatingRightside<CR>
 hi CocExplorerNormalFloat guibg=#272B34
 
@@ -413,7 +431,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " --------- Fuzzy Finder Mapping --------- {{{
- 
+
 " Search Lines in loaded buffers
 nnoremap <leader>fl :Lines<CR>
 " Search Commands
@@ -433,16 +451,17 @@ nnoremap <leader>ft :Filetypes<CR>
 
 " Exit Insert Mode
 inoremap jk <esc>
-" Make Uppercase
-inoremap <c-u> <esc>viwUi
 
 " }}}
 
 " --------- VISUAL MODE MAPPINGS ---------- {{{
 vnoremap y "*y
 
-" Execute selection in Neoterm 
-vnoremap <c-r> :TREPLSendSelection<CR>
+" Execute selection in Neoterm
+" vnoremap <c-r> :TREPLSendSelection<CR>
+
+vnoremap <c-r> :%DB postgres://jaklimoff:iPjUJxx5Cd92xOGz6Kqnavmc@localhost:5430/f1db<CR>
+nnoremap <leader>r ggVG:%DB postgres://jaklimoff:iPjUJxx5Cd92xOGz6Kqnavmc@localhost:5430/f1db<CR>
 
 " Make header out of selection
 vnoremap <leader>h !/Users/jaklimoff/bin/commands/header<CR>
@@ -450,16 +469,16 @@ vnoremap <leader>h !/Users/jaklimoff/bin/commands/header<CR>
 " [C]onvert [S]nake to [C]amel
 vnoremap <leader>csc !/Users/jaklimoff/bin/convertvar -sc<CR>
 
-" [C]onvert [C]amel to [S]nake 
+" [C]onvert [C]amel to [S]nake
 vnoremap <leader>ccs !/Users/jaklimoff/bin/convertvar -cs<CR>
 
 " }}}
 
 " ------ OPERATOR-PENDING MAPPINGS ------- {{{
-" An operator is a command that waits for you to enter 
-" a movement command, and then does something on the 
-" text between where you currently are and where the 
-" movement would take you. 
+" An operator is a command that waits for you to enter
+" a movement command, and then does something on the
+" text between where you currently are and where the
+" movement would take you.
 
 " Delete inside parentheses
 onoremap p i(
@@ -467,27 +486,29 @@ onoremap p i(
 onoremap in( :<c-u>normal! f(vi(<cr>
 " Delete inside last parentheses
 onoremap il( :<c-u>normal! F)vi(<cr>
-" Find / Delete the heading of whatever section you're in 
+" Find / Delete the heading of whatever section you're in
 " and put you in insert mode. (Markdown Heading with ==== )
 onoremap ih :<c-u>execute "normal! ?^==\\+$\r:nohlsearch\rkvg_"<cr>
 
 " }}}
 
 " ------ MORE SETTING AND FUNCTIONS ------- {{{
-" On Neovim the "basic" and "neovim" strategies will run test 
-" commands using Neovim's terminal, and leave you in insert mode, 
-" so that you can just press "Enter" to close the terminal session 
-" and go back to editing. If you want to scroll through the test 
-" command output, you'll have to first switch to normal mode. The 
-" built-in mapping for exiting terminal insert mode is CTRL-\ CTRL-n, 
+" On Neovim the "basic" and "neovim" strategies will run test
+" commands using Neovim's terminal, and leave you in insert mode,
+" so that you can just press "Enter" to close the terminal session
+" and go back to editing. If you want to scroll through the test
+" command output, you'll have to first switch to normal mode. The
+" built-in mapping for exiting terminal insert mode is CTRL-\ CTRL-n,
 " which is difficult to press, so I recommend mapping it to CTRL-o:
 if has('nvim')
   tmap <C-o> <C-\><C-n>
 endif
 
-" Vim has a feature called ''abbreviations' that feel similar 
-" to mappings but are meant for use in insert, replace, 
+" Vim has a feature called ''abbreviations' that feel similar
+" to mappings but are meant for use in insert, replace,
 " and command modes. They're extremely flexible and powerful.
 iabbrev @@ jaklimoff@gmail.com
 
 " }}}
+
+
